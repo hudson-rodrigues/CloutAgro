@@ -1,0 +1,77 @@
+<!--
+  Generated template for the CalagemPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="button">
+    <ion-title>Calagem</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="master">
+    <form [formGroup]="form">
+        <ion-item color="fundo">
+            <ion-label stacked>Data </ion-label>
+            <ion-datetime displayFormat="DD/MM/YYYY" formControlName="date"></ion-datetime>
+        </ion-item>
+        <ion-item *ngIf="!form.controls.date.valid && (form.controls.date.dirty || form.controls.date.touched)" color="danger">
+            <div [hidden]="!form.controls.date.errors.required">
+              O campo é obrigatório
+            </div>
+        </ion-item>
+        
+
+        <ion-item color="fundo"> 
+            <ion-label>Amostra</ion-label>
+            <ion-select interface="action-sheet" formControlName="amostra">
+                <ion-option *ngFor="let item of amostras | async" value="{{item.key}}">{{item.name}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item *ngIf="!form.controls.amostra.valid && (form.controls.amostra.dirty || form.controls.amostra.touched)" color="danger">
+            <div [hidden]="!form.controls.amostra.errors.required">
+              O campo é obrigatório
+            </div>
+        </ion-item>
+
+        <ion-item color="fundo">
+            <ion-label>Cultura</ion-label>
+            <ion-select interface="action-sheet" formControlName="cultura">
+                <ion-option *ngFor="let item of culturas | async" value="{{item.value}}">{{item.name}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item *ngIf="!form.controls.cultura.valid && (form.controls.cultura.dirty || form.controls.cultura.touched)" color="danger">
+                <div [hidden]="!form.controls.cultura.errors.required">
+                  O campo é obrigatório
+                </div>
+        </ion-item>
+
+        <ion-item color="fundo">
+            <ion-label stacked>PRNT </ion-label>
+            <ion-input type="text" value="80" formControlName="prnt"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!form.controls.prnt.valid && (form.controls.prnt.dirty || form.controls.prnt.touched)" color="danger">
+                <div [hidden]="!form.controls.prnt.errors.required">
+                  O campo é obrigatório
+                </div>
+        </ion-item>
+
+        <ion-item *ngIf="nomeBotao != 'Calcular'" color="fundo">
+                <ion-label stacked>Resultado </ion-label>
+                <ion-input type="text" [(ngModel)]="calagem.resultado" formControlName="resultado"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!form.controls.resultado.valid && (form.controls.resultado.dirty || form.controls.resultado.touched)" color="danger">
+                <div [hidden]="!form.controls.resultado.errors.required">
+                    O campo é obrigatório
+                </div>
+        </ion-item>
+        <div padding>
+            <button ion-button full color="button" class="btn-calcular" type="submit" [disabled]="!form.valid" (click)="calcularCalagem()">{{nomeBotao}}</button>
+        </div>
+
+    </form>
+</ion-content>

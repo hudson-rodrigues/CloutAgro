@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar color="button">
+    <ion-title>Amostras</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="master">
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of amostras | async">
+      <ion-item color="fundo">
+        <h2>{{ item.name }}</h2>
+        <p>{{ item.code }}</p>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="secondary" (click)="editAmostra(item)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button color="danger" (click)="removeAmostra(item.key)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab color="button" (click)="newAmostra()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

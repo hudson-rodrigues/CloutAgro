@@ -1,0 +1,7 @@
+{
+  "name": "CloutAgro",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

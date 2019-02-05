@@ -1,0 +1,52 @@
+<!--
+  Generated template for the HistoricoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="button">
+    <ion-title>Histórico</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="master">
+    <ion-list>
+        <ion-list-header>
+            Calagem
+        </ion-list-header>
+        <ion-item-group *ngFor="let calagem of calagens | async">
+            <ion-item-divider color="cinza" class="divider"><ion-icon name="md-pricetags" item-start></ion-icon> {{calagem.amostra}}</ion-item-divider>
+            <ion-item color="fundo"><ion-icon name="md-calendar" item-start></ion-icon>Data: {{calagem.date | date: 'dd/MM/yyyy'}}</ion-item>
+            <ion-item color="fundo" *ngIf="calagem.cultura == 60"><ion-icon name="md-leaf" item-start></ion-icon>Cultura: Café</ion-item>
+            <ion-item color="fundo"><ion-icon name="md-qr-scanner" item-start></ion-icon>PRNT: {{calagem.prnt}}</ion-item>
+            <ion-item color="fundo"><ion-icon name="md-calculator" item-start></ion-icon>Resultado: {{calagem.resultado}} T/ha</ion-item>
+            <ion-item color="fundo" *ngIf="calagem.resultado > 1"><ion-icon name="md-calculator" item-start></ion-icon>Fazer calagem</ion-item>
+            <ion-item color="fundo" *ngIf="calagem.resultado < 1"><ion-icon name="md-calculator" item-start></ion-icon>Não é necessário fazer calagem</ion-item>
+        </ion-item-group>
+      </ion-list>
+
+      <ion-list>
+          <ion-list-header>
+              Adubação
+          </ion-list-header>
+          <ion-item-group *ngFor="let adubacao of adubacoes | async">
+              <ion-item-divider color="button" class="divider"><ion-icon name="md-pricetags" item-start></ion-icon> {{adubacao.amostra}}</ion-item-divider>
+              <ion-item color="fundo"><ion-icon name="md-calendar" item-start></ion-icon>Data: {{adubacao.date | date: 'dd/MM/yyyy'}}</ion-item>
+              <ion-item color="fundo"><ion-icon name="md-qr-scanner" item-start></ion-icon>Etapa: {{adubacao.etapa}}</ion-item>
+              <ion-item color="fundo"><ion-icon name="md-leaf" item-start></ion-icon>N Foliar {{adubacao.Nfoliar}}</ion-item>
+              <ion-item color="fundo" *ngIf="adubacao.expectativa == 19"><ion-icon name="md-done-all" item-start></ion-icon>Expectativa produção: < 20 Sc/ha </ion-item>
+              <ion-item color="fundo" *ngIf="adubacao.expectativa == 30"><ion-icon name="md-done-all" item-start></ion-icon>Expectativa produção: 20-30 Sc/ha </ion-item>
+              <ion-item color="fundo" *ngIf="adubacao.expectativa == 40"><ion-icon name="md-done-all" item-start></ion-icon>Expectativa produção: 30-40 Sc/ha </ion-item>
+              <ion-item color="fundo" *ngIf="adubacao.expectativa == 50"><ion-icon name="md-done-all" item-start></ion-icon>Expectativa produção: 40-50 Sc/ha </ion-item>
+              <ion-item color="fundo" *ngIf="adubacao.expectativa == 60"><ion-icon name="md-done-all" item-start></ion-icon>Expectativa produção: 50-60 Sc/ha </ion-item>
+              <ion-item color="fundo" *ngIf="adubacao.expectativa == 61"><ion-icon name="md-done-all" item-start></ion-icon>Expectativa produção: > 60 Sc/ha </ion-item>
+              <ion-item color="fundo">Doses <button ion-button color="button" (click)="showAlert()">Info</button></ion-item>
+              <ion-item color="fundo"><ion-icon name="md-calculator" item-start></ion-icon>Nitrogênio: {{adubacao.N}} kg/ha/ano</ion-item>
+              <ion-item color="fundo"><ion-icon name="md-calculator" item-start></ion-icon>Potássio: {{adubacao.K}} kg/ha/ano</ion-item>
+          </ion-item-group>
+        </ion-list>
+</ion-content>

@@ -1,0 +1,44 @@
+
+<ion-header>
+  <ion-navbar color="button">
+    <ion-title>{{ title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="master">
+  <form [formGroup]="form">
+      <ion-item color="fundo">
+          <ion-label stacked>Proprietário</ion-label>
+          <ion-input type="text" formControlName="owner"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!form.controls.owner.valid && (form.controls.owner.dirty || form.controls.owner.touched)" color="danger">
+          <div [hidden]="!form.controls.owner.errors.required">
+            O campo é obrigatório
+          </div>
+        </ion-item>
+
+    <ion-item color="fundo">
+      <ion-label stacked>Nome</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.name.valid && (form.controls.name.dirty || form.controls.name.touched)" color="danger">
+      <div [hidden]="!form.controls.name.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item color="fundo">
+      <ion-label stacked>Descricao</ion-label>
+      <ion-input type="text" formControlName="description"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.description.valid && (form.controls.description.dirty || form.controls.description.touched)" color="danger">
+      <div [hidden]="!form.controls.description.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <div padding>
+      <button ion-button full color="button" class="btn-salvar" type="submit" [disabled]="!form.valid" (click)="onSubmit()">Salvar</button>
+    </div>
+  </form>
+</ion-content>

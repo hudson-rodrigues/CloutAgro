@@ -1,0 +1,41 @@
+page-home {
+
+    .master {
+        background-image: url('https://lh3.googleusercontent.com/G2c_DOyIGfAaL3627m4hcp41o7ugV37V7Nhq5mXZ2uKTfHI71NA89tcuj5mELkmHS564aO22zMPgybkCI2dRfQkPtI6W_Ku0nP6tnekvTABjYgnb-ZuCq2nsje5XghHFaM49bn3K7g=w2400');
+        background-size: cover;
+        background-position: center;
+    }
+    .boas-vindas {
+        margin-top: 18vh;
+        text-align: center;
+        color: white;
+    }
+    .grid-home {
+        position: absolute;
+        bottom: 4vh;
+    }
+    .texto-branco {
+        color: white;
+    }
+    .btn {
+        background-color: white;
+        color: #575654;
+        height: 8vh;
+        border-radius: .6vh;
+        border: 1px #575654 solid;
+        font-size: 2.5vh;
+    }
+    .btn-exit {
+        height: 8vh;
+        background-color: white;
+        border-radius: .6vh;
+        font-size: 2.5vh;
+        color: #575654;
+        border: 1px #575654 solid;
+    }
+    .div-footer {
+        padding-top: 25vh;
+        padding-right: 2vh;
+        float: right;
+    }
+}

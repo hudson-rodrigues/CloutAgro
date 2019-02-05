@@ -1,0 +1,87 @@
+<ion-header>
+
+  <ion-navbar color="button">
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content color="fundo" class="master">
+    <ion-card color="fundo">
+      <ion-card-header>
+        Olá {{authService.usuario.name}}, bem vindo(a) ao CloutAgro.
+      </ion-card-header>
+      <ion-card-content *ngIf="provider.PROPERTY != ''">
+        Você está na propriedade {{ provider.PROPERTY }}.
+      </ion-card-content>
+      <ion-card-content *ngIf="providerArea.TALHAO != ''">
+        Você está no talhão {{ providerArea.TALHAO }}.
+      </ion-card-content>
+    </ion-card>
+    <ion-grid class="grid-home">
+      <ion-row>
+        <ion-col col-6>
+          <button class="btn"  ion-button icon-start small full color="light" (click)="propriedades()">
+            <ion-icon name="ios-home"></ion-icon>  
+            Propriedades
+          </button>
+        </ion-col>
+
+        <ion-col col-6>
+          <button class="btn" ion-button icon-start small full color="light" (click)="areas()" [disabled]="providerArea.KEY_PROPERTY === ''">
+            <ion-icon name="ios-git-compare" color="white"></ion-icon>
+            Talhões
+          </button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-6>
+          <button class="btn" ion-button icon-start small full color="light" (click)="amostras()" [disabled]="providerAmostra.KEY_AREA === ''">
+            <ion-icon name="ios-flask" ></ion-icon>
+            Amostras
+          </button>
+        </ion-col>
+        <ion-col col-6>
+          <button class="btn" ion-button icon-start small full color="light" (click)="calagem()" [disabled]="providerAmostra.KEY_AREA === ''">
+            <ion-icon name="ios-barcode"></ion-icon>
+            Calagem
+          </button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-6>
+          <button class="btn" ion-button icon-start small full color="light" (click)="adubacao()" [disabled]="providerAmostra.KEY_AREA === ''">
+            <ion-icon name="ios-leaf"></ion-icon>
+            Adubação
+          </button>
+        </ion-col>
+        <ion-col col-6>
+          <button class="btn" ion-button icon-start small full color="light" (click)="historico()" [disabled]="providerArea.KEY_PROPERTY === ''">
+            <ion-icon name="md-filing"></ion-icon>
+            Histórico
+          </button>
+        </ion-col>
+      </ion-row>
+
+        <ion-row>
+          <ion-col col-6>
+            <button class="btn" ion-button icon-start small full color="light" (click)="cultura()">
+              <ion-icon name="md-rose"></ion-icon>
+              Cultura
+            </button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-12>
+            <button class="btn-exit" ion-button icon-start small full color="light" (click)="signOut()">
+              <ion-icon name="md-exit"></ion-icon>
+              Sair
+            </button>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

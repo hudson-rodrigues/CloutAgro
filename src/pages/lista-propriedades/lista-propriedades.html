@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar color="button">
+    <ion-title>Propriedades</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="master">
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of properties | async">
+      <ion-item (click)="selectProperty(item)" color="fundo">
+        <h2>{{ item.name }}</h2>
+        <p>{{ item.description }}</p>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="secondary" (click)="editProperty(item)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button color="danger" (click)="removeProperty(item)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab color="button" (click)="newProperty()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

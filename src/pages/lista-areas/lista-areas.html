@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar color="button">
+    <ion-title>Talhões</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="master">
+  <ion-list>
+    <ion-item-sliding *ngFor="let area of areas | async">
+      <ion-item (click)="selectArea(area)" color="fundo">
+        <h2>{{ area.name }}</h2>
+        <p>{{ area.description }}</p>
+      </ion-item> 
+      <ion-item-options side="left">
+        <button ion-button color="secondary" (click)="editArea(area)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button color="danger" (click)="removeArea(area)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab color="button" (click)="newArea()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

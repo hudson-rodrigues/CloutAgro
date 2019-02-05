@@ -1,0 +1,104 @@
+<!--
+  Generated template for the AdubacaoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="button">
+    <ion-title>Adubação</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="master">
+  <form [formGroup]="form">
+      <ion-item color="fundo">
+          <ion-label stacked>Data </ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" formControlName="date"></ion-datetime>
+      </ion-item>
+      <ion-item *ngIf="!form.controls.date.valid && (form.controls.date.dirty || form.controls.date.touched)" color="danger">
+          <div [hidden]="!form.controls.date.errors.required">
+            O campo é obrigatório
+          </div>
+      </ion-item>
+
+      <ion-item color="fundo">
+        <ion-label stacked>Etapa </ion-label>
+        <ion-input formControlName="etapa" [(ngModel)]="etapa" disabled></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!form.controls.etapa.valid && (form.controls.etapa.dirty || form.controls.etapa.touched)" color="danger">
+        <div [hidden]="!form.controls.etapa.errors.required">
+          O campo é obrigatório
+        </div>
+    </ion-item>
+
+      <ion-item color="fundo">
+            <ion-label>Expectativa de produção</ion-label>
+            <ion-select interface="action-sheet" formControlName="expectativa" [(ngModel)]="adubacao.expectativa">
+              <ion-option value="19"> < 20 Sc/ha </ion-option>
+              <ion-option value="30">20-30 Sc/ha </ion-option>
+              <ion-option value="40">30-40 Sc/ha </ion-option>
+              <ion-option value="50">40-50 Sc/ha </ion-option>
+              <ion-option value="60">50-60 Sc/ha </ion-option>
+              <ion-option value="61"> 60> Sc/ha </ion-option>
+            </ion-select>
+      </ion-item>
+      <ion-item *ngIf="!form.controls.expectativa.valid && (form.controls.expectativa.dirty || form.controls.expectativa.touched)" color="danger">
+          <div [hidden]="!form.controls.expectativa.errors.required">
+            O campo é obrigatório
+          </div>
+      </ion-item>
+
+      <ion-item color="fundo">
+        <ion-label stacked>N foliar</ion-label>
+        <ion-input type="text" formControlName="Nfoliar" [(ngModel)]="adubacao.Nfoliar" required></ion-input>
+      </ion-item>
+      <button ion-button color="button"  (click)="semNFoliar()">
+          Não sei
+      </button>
+      <ion-item *ngIf="!form.controls.Nfoliar.valid && (form.controls.Nfoliar.dirty || form.controls.Nfoliar.touched)" color="danger">
+          <div [hidden]="!form.controls.Nfoliar.errors.required">
+            O campo é obrigatório
+          </div>
+      </ion-item>
+
+      <ion-item color="fundo">
+          <ion-label>Amostra</ion-label>
+          <ion-select interface="action-sheet" formControlName="amostra">
+              <ion-option *ngFor="let item of amostras | async" value="{{item.key}}">{{item.name}}</ion-option>
+          </ion-select>
+      </ion-item>
+      <ion-item *ngIf="!form.controls.amostra.valid && (form.controls.amostra.dirty || form.controls.amostra.touched)" color="danger">
+          <div [hidden]="!form.controls.amostra.errors.required">
+            O campo é obrigatório
+          </div>
+      </ion-item>
+
+      <ion-item *ngIf="nomeBotao != 'Calcular'" color="fundo">
+        <ion-label stacked>Nitrogênio </ion-label>
+        <ion-input type="text" formControlName="N"  [(ngModel)]="adubacao.N" disabled></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!form.controls.N.valid && (form.controls.N.dirty || form.controls.N.touched)" color="danger">
+              <div [hidden]="!form.controls.N.errors.required">
+                  O campo é obrigatório
+              </div>
+      </ion-item>
+
+      <ion-item *ngIf="nomeBotao != 'Calcular'" color="fundo">
+        <ion-label stacked>Potássio </ion-label>
+        <ion-input type="text" formControlName="K" [(ngModel)]="adubacao.K" disabled></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!form.controls.K.valid && (form.controls.K.dirty || form.controls.K.touched)" color="danger">
+        <div [hidden]="!form.controls.K.errors.required">
+            O campo é obrigatório
+        </div>
+      </ion-item>
+
+      <div padding>
+          <button ion-button full color="button" class="btn-calcular" [disabled]="!form.valid" type="submit" (click)="calcularAdubacao()">{{nomeBotao}}</button>
+      </div>
+  </form>
+</ion-content>
